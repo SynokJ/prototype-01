@@ -55,4 +55,16 @@ public class Player : MonoBehaviour
         _movement.MoveByDirection(_joystick.Direction);
         _animation.SetAnimationByDirection(_joystick.Direction);
     }
+
+    public void OnHit()
+    {
+        _animation.PlayAttackAnimation();
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, 0.8f, transform.forward);
+        foreach (var hit in hits)
+        {
+            IDamageable damageable = hit.transform.GetComponent<IDamageable>();
+            if (damageable != null)
+                damageable.TakeDamage();
+        }
+    }
 }

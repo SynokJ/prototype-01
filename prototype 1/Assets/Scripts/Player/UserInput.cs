@@ -5,6 +5,8 @@ public class UserInput
     public event System.Action<UnityEngine.Vector2> OnTouchMoving = default;
     public event System.Action OnTouchEnded = default;
 
+    private bool _isCorrectTouch = true;
+
     public UserInput()
     {
     }
@@ -22,12 +24,21 @@ public class UserInput
             switch (firstTouch.phase)
             {
                 case UnityEngine.TouchPhase.Began:
-                    OnTouchBegin?.Invoke(firstTouch.position); break;
+                    _isCorrectTouch = !IsTouchingUI(firstTouch);
+                    if (_isCorrectTouch)
+                        OnTouchBegin?.Invoke(firstTouch.position);
+                    break;
                 case UnityEngine.TouchPhase.Moved:
-                    OnTouchMoving?.Invoke(firstTouch.position); break;
+                    if (_isCorrectTouch)
+                        OnTouchMoving?.Invoke(firstTouch.position);
+                    break;
                 case UnityEngine.TouchPhase.Ended:
-                    OnTouchEnded?.Invoke(); break;
+                    OnTouchEnded?.Invoke();
+                    break;
             }
         }
     }
+
+    private bool IsTouchingUI(UnityEngine.Touch touch)
+        => UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(touch.fingerId);
 }

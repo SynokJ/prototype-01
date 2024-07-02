@@ -12,6 +12,11 @@ public class PlayerAnimation
     {
     }
 
+    public void PlayAttackAnimation()
+    {
+        _animator.SetTrigger("on_hit");
+    }
+
     public void SetAnimationByDirection(UnityEngine.Vector2 velocity)
     {
         if (velocity == UnityEngine.Vector2.zero)
