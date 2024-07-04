@@ -14,6 +14,9 @@ EditorUserSettings:
     RecentlyUsedSceneGuid-2:
       value: 5354045655035d0e5d0a5e734775064441151972287f77317d781f62bae56469
       flags: 0
+    RecentlyUsedSceneGuid-3:
+      value: 0755560200540b5a0c570f24137b094414164c7e2d2d22327d2f1c32bbb76369
+      flags: 0
     UnityRemoteDevice:
       value: 225f4d46245b0d4902070862342649191512
       flags: 0
@@ -37,4 +40,5 @@ EditorUserSettings:
   m_VCHierarchyOverlayIcons: 1
   m_VCOtherOverlayIcons: 1
   m_VCAllowAsyncUpdate: 1
+  m_VCScanLocalPackagesOnConnect: 1
   m_ArtifactGarbageCollection: 1
